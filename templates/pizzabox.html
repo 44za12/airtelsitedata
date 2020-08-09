@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="col-md-12">
+    <form class="form-inline mt-2">
+        <select id="site" name="site" class="selectpicker form-control dropdown-dense pull-right" data-width="100%" data-size="7" data-selected-text-format="count > 3" data-style="btn-dark" title="SELECT SITE" data-actions-box="true" data-header="Start typing..." data-live-search="true" data-live-search-placeholder="Search ..." onchange="this.form.submit()">
+            {% for site in sites %}
+            <option value="{{site}}">{{site}}</option>
+            {% endfor %}
+        </select>
+    </form>
+    <table class="table table-hovered mt-3 w-50 mx-auto">
+        <tbody>
+            {% for i in data %}
+                <tr>
+                    <th colspan="3" class="text-center">Data for {{i.get("GIS Code")}}</th>
+                </tr>
+                {% for key, value in i.items() %}
+                <tr class="d-flex">
+                    <th class="col-7">{{key}}</th>
+                    <td class="text-center col-auto">:</td>
+                    <td class="col-4">{{value}}</td>
+                </tr>
+                {% endfor %}
+                <br>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if text %}
+    <h1 class="text-center mb-5 text-dark">{{text}}</h1>
+    <div class="col-auto w-50 mx-auto mt-5">
+        <h4 class="text-center text-dark">The best way to train technicians.</h4>
+        <a href="http://www.nittiolearn.com"><img class="img-fluid col-12 mx-auto mt-4 mb-4" src="https://www.nittiolearn.com/website_static/logo-blue.png?version=static_v35" alt="Nittio Learn"></a>
+        <p class="text-dark">Create, deliver and manage large variety and volume of training with ease. Built for trainers of technical workforce and more.</p>
+        <a href="http://www.nittiolearn.com" class="pull-right btn btn-sm btn-light">Know More!</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
